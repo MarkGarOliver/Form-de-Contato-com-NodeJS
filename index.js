@@ -2,14 +2,24 @@ const express = require('express')
 const app = express()
 const bodyparser = require('body-parser')
 const Contato = require("./models-db/Contato")
+const handlebars = require('express-handlebars')
 
 
 //config
-    app.use(bodyparser.urlencoded({extended: false}))
-    app.use(bodyparser.json())
+    //body-parser
+        app.use(bodyparser.urlencoded({extended: false}))
+        app.use(bodyparser.json())
+    //handlebars
+        app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
+        app.set('view engine', 'handlebars')
+        app.set('views', './views')
 
 
 //Rotas
+
+    app.get('/handlebars', (req, res) => {
+        res.render('home')
+    })
 
     app.get("/contato", function(req, res){
         res.sendFile(__dirname + "/form/index.html")
