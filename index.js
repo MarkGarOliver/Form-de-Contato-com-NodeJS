@@ -52,7 +52,14 @@ const handlebars = require('express-handlebars')
         })
     })
 
-
+    //rota para deletar contatos
+    app.get('/deletar/:id', function(req, res){
+        Contato.destroy({where: {'id': req.params.id}}).then(function(){
+            res.send('Deletado com sucesso ! ')
+        }).catch(function(erro){
+            res.send("erro ao deletar: " + erro)
+        })
+    })
 
 
 
