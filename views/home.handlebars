@@ -1,1 +1,9 @@
-<h1>home HandleBars</h1>
+<h1>Lista de contato enviados</h1>
+
+
+{{#each contatos}}
+    <h4>Nome: {{nome}}</h4>
+    <h4>Email: {{email}}</h4>
+    <p>Mensagem: {{mensagem}}</p>
+    <hr>
+{{/each}}
